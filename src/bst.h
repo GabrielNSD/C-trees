@@ -132,51 +132,129 @@ int altura(struct noBst *raiz)
 
     if (altura_esquerda < altura_direita)
     {
-        //std::cout << altura_esquerda << std::endl;
         return altura_direita + 1;
     }
     else
     {
-        //std::cout << altura_direita << std::endl;
         return altura_esquerda + 1;
     }
 }
 
-// /**
-//  * Funcao que navega em-ordem na BST e
-//  * imprime seus elementos.
-//  **/
-// void emOrdem(struct noBst *raiz)
-// {
-//     //IMPLEMENTAR
-// }
+/**
+ * Funcao que navega em-ordem na BST e
+ * imprime seus elementos.
+ **/
+void emOrdem(struct noBst *raiz)
+{
+    noBst *temp = raiz;
+    if (raiz->esq != NULL)
+    {
+        emOrdem(raiz->esq);
+    }
+    if (raiz->dir != NULL)
+    {
+        std::cout << temp->val << " ";
+        emOrdem(raiz->dir);
+    }
+    else
+    {
+        std::cout << raiz->val << " ";
+    }
+}
 
-// /**
-//  * Funcao que navega pre-ordem na BST e
-//  * imprime seus elementos.
-//  **/
-// void preOrdem(struct noBst *raiz)
-// {
-//     //IMPLEMENTAR
-// }
+/**
+ * Funcao que navega pre-ordem na BST e
+ * imprime seus elementos.
+ **/
+void preOrdem(struct noBst *raiz)
+{
+    std::cout << raiz->val << " ";
+    if (raiz->esq != NULL)
+    {
+        preOrdem(raiz->esq);
+    }
+    if (raiz->dir != NULL)
+    {
+        preOrdem(raiz->dir);
+    }
+}
 
-// /**
-//  * Funcao que navega pos-ordem na BST e
-//  * imprime seus elementos.
-//  **/
-// void posOrdem(struct noBst *raiz)
-// {
-//     //IMPLEMENTAR
-// }
+/**
+ * Funcao que navega pos-ordem na BST e
+ * imprime seus elementos.
+ **/
+void posOrdem(struct noBst *raiz)
+{
+    if (raiz->esq != NULL)
+    {
+        posOrdem(raiz->esq);
+    }
+    if (raiz->dir != NULL)
+    {
+        posOrdem(raiz->dir);
+    }
+    std::cout << raiz->val << " ";
+}
 
-// /**
-//  * Funcao que recebe a raiz de uma BST, e
-//  * remove o no que contem o valor passado como
-//  * argumento. Tamanho deve ser decrementado.
-//  * Tamanho é passado por referência.
-//  **/
+struct noBst *noMinValor(struct noBst *no)
+{
+    struct noBst *aux = no;
 
-// struct noBst *remover(struct noBst *raiz, int val, int *tamanho)
-// {
-//     //IMPLEMENTAR
-// }
+    while (aux && aux->esq != NULL)
+        aux = aux->esq;
+
+    return aux;
+}
+
+/**
+ * Funcao que recebe a raiz de uma BST, e
+ * remove o no que contem o valor passado como
+ * argumento. Tamanho deve ser decrementado.
+ * Tamanho é passado por referência.
+ **/
+
+struct noBst *remover(struct noBst *raiz, int val, int *tamanho)
+{
+    //std::cout << "Valor: " << raiz->val << std::endl;
+    if (raiz == NULL)
+    {
+        return raiz;
+    }
+
+    if (val < raiz->val)
+        raiz->esq = remover(raiz->esq, val, tamanho);
+
+    else if (val > raiz->val)
+        raiz->dir = remover(raiz->dir, val, tamanho);
+
+    else
+    {
+        // no folha
+        if (raiz->esq == NULL && raiz->dir == NULL)
+            return NULL;
+
+        // no com apenas 1 filho
+        else if (raiz->esq == NULL)
+        {
+            struct noBst *temp = raiz->dir;
+            free(raiz);
+            return temp;
+        }
+        else if (raiz->dir == NULL)
+        {
+            struct noBst *temp = raiz->esq;
+            free(raiz);
+            return temp;
+        }
+
+        // no com 2 filhos
+        struct noBst *temp = noMinValor(raiz->dir);
+
+        raiz->val = temp->val;
+
+        raiz->dir = remover(raiz->dir, temp->val, tamanho);
+
+        tamanho--;
+    }
+    return raiz;
+}

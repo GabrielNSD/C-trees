@@ -109,7 +109,7 @@ TEST_F(BstTest, AlturaBST)
 
 	EXPECT_EQ(altura(raiz), 3);
 }
-/*
+
 TEST_F(BstTest, EmOrdem)
 {
 	inserir(&raiz, 12, &tamanho);
@@ -237,7 +237,7 @@ TEST_F(BstTest, Remover)
 	EXPECT_TRUE(buscar(raiz, 16));
 	EXPECT_TRUE(buscar(raiz, 18));
 	EXPECT_TRUE(buscar(raiz, 21));
-} */
+}
 
 int main(int argc, char **argv)
 {
