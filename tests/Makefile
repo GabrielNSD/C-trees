@@ -142,32 +142,32 @@ runTests/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/build
 .PHONY : runTests/fast
 
-testBst.o: testBst.cpp.o
+testAvl.o: testAvl.cpp.o
 
-.PHONY : testBst.o
+.PHONY : testAvl.o
 
 # target to build an object file
-testBst.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/testBst.cpp.o
-.PHONY : testBst.cpp.o
+testAvl.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/testAvl.cpp.o
+.PHONY : testAvl.cpp.o
 
-testBst.i: testBst.cpp.i
+testAvl.i: testAvl.cpp.i
 
-.PHONY : testBst.i
+.PHONY : testAvl.i
 
 # target to preprocess a source file
-testBst.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/testBst.cpp.i
-.PHONY : testBst.cpp.i
+testAvl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/testAvl.cpp.i
+.PHONY : testAvl.cpp.i
 
-testBst.s: testBst.cpp.s
+testAvl.s: testAvl.cpp.s
 
-.PHONY : testBst.s
+.PHONY : testAvl.s
 
 # target to generate assembly for a file
-testBst.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/testBst.cpp.s
-.PHONY : testBst.cpp.s
+testAvl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/testAvl.cpp.s
+.PHONY : testAvl.cpp.s
 
 # Help Target
 help:
@@ -178,9 +178,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... runTests"
-	@echo "... testBst.o"
-	@echo "... testBst.i"
-	@echo "... testBst.s"
+	@echo "... testAvl.o"
+	@echo "... testAvl.i"
+	@echo "... testAvl.s"
 .PHONY : help
 
 
